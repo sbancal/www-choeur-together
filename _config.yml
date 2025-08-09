@@ -15,6 +15,19 @@ markdown: kramdown
 plugins:
   - jekyll-feed
 
+# Collections for organizing pages
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "default"
+
 # Exclude from processing.
 exclude:
   - Gemfile

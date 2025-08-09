@@ -1,5 +1,6 @@
 ---
-layout: default
+title: Choeur Together
+permalink: /
 ---
 
 # Site en construction
