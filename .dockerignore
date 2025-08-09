@@ -18,14 +18,11 @@ Gemfile.lock
 ehthumbs.db
 Thumbs.db
 
-# IDE files (keep shared development settings)
-.vscode/launch.json
-.vscode/tasks.json
-.vscode/*.code-workspace
+# IDE files
+.vscode/
 .idea/
 *.swp
 *.swo
-*~
 
 # Logs
 *.log
@@ -34,7 +31,7 @@ Thumbs.db
 *.tmp
 *.temp
 
-# Ruby
+# Ruby build artifacts
 *.gem
 *.rbc
 /.config
@@ -46,6 +43,10 @@ Thumbs.db
 /test/version_tmp/
 /tmp/
 
-# Environment variables
+# Environment variables (security)
 .env
 .env.local
+
+# Git directory
+.git/
+.gitignore

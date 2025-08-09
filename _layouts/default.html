@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ site.title | default: "Jekyll Hello World" }}</h1>
+            <p>{{ site.description | default: "A simple Jekyll site" }}</p>
+
+            <nav>
+                <a href="{{ '/' | relative_url }}">Home</a>
+            </nav>
+        </header>
+
+        <main>
+            {{ content }}
+        </main>
+
+        <footer>
+            <p style="text-align: center; margin-top: 40px; color: #7f8c8d;">
+                Ouest-Lausannois • {{ site.time | date: "%Y" }}
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
