@@ -4,6 +4,6 @@ permalink: /
 ---
 
 # Site en construction
-{:.home}
+{:.title}
 
 Plus à venir !

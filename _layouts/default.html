@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Parisienne&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>{{ site.title | default: "Jekyll Hello World" }}</h1>
-            <p>{{ site.description | default: "A simple Jekyll site" }}</p>
+            <h1 class="parisienne-title">{{ site.title }}</h1>
+            <p>{{ site.description }}</p>
 
             <nav>
                 <a href="{{ '/' | relative_url }}">Home</a>
