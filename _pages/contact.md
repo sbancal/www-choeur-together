@@ -6,4 +6,5 @@ permalink: /contact/
 # Contact
 {:.title}
 
-Pour toute question, n'hésitez pas à nous contacter à l'adresse suivante : [contact@choeur-together.ch](mailto:contact@choeur-together.ch)
+Vous êtes responsables d'une institution ou d'un événement et vous souhaitez nous inviter à chanter ?
+Contactez-nous à l'adresse suivante : [contact@choeur-together.ch](mailto:contact@choeur-together.ch)

@@ -6,9 +6,11 @@ permalink: /about/
 # Qui sommes-nous ?
 {:.title}
 
-Together est un chœur engagé, ancré dans la région lausannoise, visant à rendre gloire à Dieu en transmettant un message d'espérance et de paix grâce à ses chants gospels (mais pas que)! Ses représentations ont essentiellement lieu en dehors de l'église et sont particulièrement destinées aux personnes en marge de la société (prison, hôpitaux, EMS, rue, etc.).
+Fondé en 2024, Together est un chœur engagé et ancré dans la région lausannoise.
+Nous désirons rendre gloire à Dieu en transmettant un message d'espérance et de paix.
 
-## L'équipe
-{:.title}
+Nous construisons et arrangeons notre répertoire autour de chants gospel et contemporains, en français et en anglais.
 
-Quatuor lead + env 25 choristes
+Notre cœur est de rejoindre les personnes en marge (prison, hôpitaux, EMS, foyers, rue, etc.).
+
+Le chœur est constitué d'une vingtaine de choristes répartis en 4 registres (SATB) et emmené par un comité enthousiaste.

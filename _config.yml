@@ -6,7 +6,7 @@
 # feature for the data you need to update frequently.
 
 title: Choeur Together
-description: Partager l'amour de Jésus à travers le chant, auprès de tous dans notre région.
+description: Partager l'amour de Jésus à travers le chant parce que chaque personne compte.
 url: "https://sbancal.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/www-choeur-together" # the subpath of your site, e.g. /blog
 

@@ -13,14 +13,12 @@
     <div class="container">
         <header>
             <h1 class="parisienne-title">{{ site.title }}</h1>
-            <p>{{ site.description }}</p>
-
             <nav>
-                <a href="{{ '/' | relative_url }}">Home</a>
+                <a href="{{ '/' | relative_url }}">Accueil</a>
                 <a href="{{ '/about/' | relative_url }}">Qui sommes-nous ?</a>
                 <a href="{{ '/performances/' | relative_url }}">Nos prestations</a>
-                <a href="{{ '/contact/' | relative_url }}">Contact</a>
                 <a href="{{ '/join/' | relative_url }}">Rejoins-nous !</a>
+                <a href="{{ '/contact/' | relative_url }}">Contact</a>
             </nav>
         </header>
 
@@ -30,6 +28,8 @@
 
         <footer>
             <p style="text-align: center; margin-top: 40px; color: #7f8c8d;">
+                {{ site.description }}
+                <br />
                 Ouest-Lausannois • {{ site.time | date: "%Y" }}
             </p>
         </footer>
