@@ -44,6 +44,15 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Build Next version
+        # Build the /next version from the next/ directory
+        run: |
+          cd next
+          bundle install
+          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}/next" --destination ../_site/next
+        env:
+          JEKYLL_ENV: production
+
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Parisienne&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container next-version">
+        <header>
+            <h1 class="parisienne-title">{{ site.title }}</h1>
+            <nav>
+                <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="nav-current"{% endif %}>Accueil</a>
+                <a href="{{ '/qui-sommes-nous/' | relative_url }}" {% if page.url == '/qui-sommes-nous/' %}class="nav-current"{% endif %}>Qui sommes-nous ?</a>
+                <a href="{{ '/notre-histoire/' | relative_url }}" {% if page.url == '/notre-histoire/' %}class="nav-current"{% endif %}>Notre histoire</a>
+                <a href="{{ '/rejoins-nous/' | relative_url }}" {% if page.url == '/rejoins-nous/' %}class="nav-current"{% endif %}>Rejoins-nous !</a>
+                <a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}class="nav-current"{% endif %}>Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            {{ content }}
+        </main>
+
+        <footer>
+            <p style="text-align: center; margin-top: 40px; color: #7f8c8d;">
+                {{ site.description }}
+                <br />
+                Ouest-Lausannois • {{ site.time | date: "%Y" }}
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

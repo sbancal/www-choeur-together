@@ -1,10 +1,10 @@
-# Jekyll Container Management Makefile
-# Supports both Docker and Podman
+# Jekyll Container Management Makefile (Dual Targets)
 
 # Configuration
 IMAGE_NAME := www-choeur-together
 CONTAINER_NAME := www-choeur-together
-PORT := 4000
+PORT_MAIN := 4000
+PORT_NEXT := 4001
 
 # Detect container runtime (Docker or Podman)
 CONTAINER_RUNTIME := $(shell command -v podman 2>/dev/null || command -v docker 2>/dev/null)
@@ -20,115 +20,85 @@ ifndef CONTAINER_RUNTIME
 $(error Neither Docker nor Podman found. Please install one of them to use this Jekyll setup)
 endif
 
-# Default target
-.PHONY: help
+.DEFAULT_GOAL := help
+
+.PHONY: help dev-main dev-next stop-main stop-next logs-main logs-next build
+
 help: ## Show this help message
 	@echo "Jekyll Container Management"
 	@echo ""
-	@echo "Available targets:"
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  $(GREEN)%-15s$(NC) %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  $(GREEN)%-16s$(NC) %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 	@echo ""
 	@echo "Container Runtime: $(CONTAINER_RUNTIME)"
 	@echo "Image Name: $(IMAGE_NAME)"
-	@echo "Container Name: $(CONTAINER_NAME)"
-	@echo "Port: $(PORT)"
 	@echo ""
-	@echo "Site will be available at: http://localhost:$(PORT)"
 
-.PHONY: build
-build: ## Build the Jekyll container image
-	@echo -e "$(GREEN)[INFO]$(NC) Building Jekyll container image..."
-	$(CONTAINER_RUNTIME) build -t $(IMAGE_NAME) .
-	@echo -e "$(GREEN)[INFO]$(NC) Build completed successfully!"
-
-.PHONY: run
-run: stop ## Run the Jekyll development server in a container
-	@echo -e "$(GREEN)[INFO]$(NC) Starting Jekyll development server..."
+dev-main: stop-main ## Run main site container on port 4000
+	@echo -e "$(GREEN)[INFO]$(NC) Starting main site on :$(PORT_MAIN)..."
 ifeq ($(shell basename $(CONTAINER_RUNTIME)),podman)
 	$(CONTAINER_RUNTIME) run -d \
 		--name $(CONTAINER_NAME) \
-		-p $(PORT):4000 \
+		-p $(PORT_MAIN):4000 \
 		-v "$$(pwd):/app:Z" \
 		$(IMAGE_NAME)
 else
 	$(CONTAINER_RUNTIME) run -d \
 		--name $(CONTAINER_NAME) \
-		-p $(PORT):4000 \
+		-p $(PORT_MAIN):4000 \
 		-v "$$(pwd):/app" \
 		$(IMAGE_NAME)
 endif
-	@echo -e "$(GREEN)[INFO]$(NC) Jekyll server is starting..."
-	@echo -e "$(GREEN)[INFO]$(NC) Site will be available at: http://localhost:$(PORT)"
-	@echo -e "$(GREEN)[INFO]$(NC) Container name: $(CONTAINER_NAME)"
-	@echo -e "$(YELLOW)[INFO]$(NC) Waiting for Jekyll server to be ready..."
-	@sleep 1
-	@echo -e "$(GREEN)[INFO]$(NC) Jekyll server should now be ready! Check logs with: make logs"
+	@echo -e "$(GREEN)[INFO]$(NC) Main site running at: http://localhost:$(PORT_MAIN)"
 
-.PHONY: stop
-stop: ## Stop and remove the Jekyll container
-	@echo -e "$(GREEN)[INFO]$(NC) Stopping Jekyll container..."
+dev-next: stop-next ## Run next site container on port 4001
+	@echo -e "$(GREEN)[INFO]$(NC) Starting next site on :$(PORT_NEXT)..."
+ifeq ($(shell basename $(CONTAINER_RUNTIME)),podman)
+	$(CONTAINER_RUNTIME) run -d \
+		--name $(CONTAINER_NAME)-next \
+		-p $(PORT_NEXT):4000 \
+		-v "$$(pwd)/next:/app:Z" \
+		$(IMAGE_NAME)
+else
+	$(CONTAINER_RUNTIME) run -d \
+		--name $(CONTAINER_NAME)-next \
+		-p $(PORT_NEXT):4000 \
+		-v "$$(pwd)/next:/app" \
+		$(IMAGE_NAME)
+endif
+	@echo -e "$(GREEN)[INFO]$(NC) Next site running at: http://localhost:$(PORT_NEXT)"
+
+stop-main: ## Stop and remove main site container
+	@echo -e "$(GREEN)[INFO]$(NC) Stopping main site container..."
 	@$(CONTAINER_RUNTIME) stop $(CONTAINER_NAME) >/dev/null 2>&1 || true
 	@$(CONTAINER_RUNTIME) rm $(CONTAINER_NAME) >/dev/null 2>&1 || true
-	@echo -e "$(GREEN)[INFO]$(NC) Container stopped."
 
-.PHONY: restart
-restart: stop run ## Restart the Jekyll container
+stop-next: ## Stop and remove next site container
+	@echo -e "$(GREEN)[INFO]$(NC) Stopping next site container..."
+	@$(CONTAINER_RUNTIME) stop $(CONTAINER_NAME)-next >/dev/null 2>&1 || true
+	@$(CONTAINER_RUNTIME) rm $(CONTAINER_NAME)-next >/dev/null 2>&1 || true
 
-.PHONY: logs
-logs: ## Show container logs (follow mode)
-	@echo -e "$(GREEN)[INFO]$(NC) Showing Jekyll container logs..."
+logs-main: ## Show logs for main site container
+	@echo -e "$(GREEN)[INFO]$(NC) Showing main site logs..."
 	$(CONTAINER_RUNTIME) logs -f $(CONTAINER_NAME)
 
-.PHONY: shell
-shell: ## Open a shell in the running container
-	@echo -e "$(GREEN)[INFO]$(NC) Opening shell in Jekyll container..."
-	$(CONTAINER_RUNTIME) exec -it $(CONTAINER_NAME) /bin/sh
+logs-next: ## Show logs for next site container
+	@echo -e "$(GREEN)[INFO]$(NC) Showing next site logs..."
+	$(CONTAINER_RUNTIME) logs -f $(CONTAINER_NAME)-next
 
-.PHONY: status
-status: ## Show container status
-	@echo -e "$(GREEN)[INFO]$(NC) Container status:"
-	@$(CONTAINER_RUNTIME) ps -a --filter name=$(CONTAINER_NAME) --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
-
-.PHONY: clean
-clean: stop ## Stop container and remove image
-	@echo -e "$(GREEN)[INFO]$(NC) Removing Jekyll container image..."
-	@$(CONTAINER_RUNTIME) rmi $(IMAGE_NAME) >/dev/null 2>&1 || true
-	@echo -e "$(GREEN)[INFO]$(NC) Cleanup completed."
-
-.PHONY: dev
-dev: build run ## Build and run in one command (development workflow)
-	@echo -e "$(GREEN)[INFO]$(NC) Development environment is ready!"
-
-.PHONY: build-site
-build-site: ## Build the Jekyll site (output to _site directory)
-	@echo -e "$(GREEN)[INFO]$(NC) Building Jekyll site..."
+build-main: ## Build the main Jekyll site
+	@echo -e "$(GREEN)[INFO]$(NC) Building main Jekyll site..."
 ifeq ($(shell basename $(CONTAINER_RUNTIME)),podman)
 	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd):/app:Z" -w /app $(IMAGE_NAME) bundle exec jekyll build
 else
 	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd):/app" -w /app $(IMAGE_NAME) bundle exec jekyll build
 endif
-	@echo -e "$(GREEN)[INFO]$(NC) Site built successfully in _site directory!"
+	@echo -e "$(GREEN)[INFO]$(NC) Main site built successfully in _site directory!"
 
-.PHONY: bundle
-bundle: ## Run bundle command in container (e.g., make bundle ARGS="add jekyll-sitemap")
-	@echo -e "$(GREEN)[INFO]$(NC) Running bundle command in container..."
+build-next: ## Build the next Jekyll site
+	@echo -e "$(GREEN)[INFO]$(NC) Building next Jekyll site..."
 ifeq ($(shell basename $(CONTAINER_RUNTIME)),podman)
-	$(CONTAINER_RUNTIME) run --rm -it -v "$$(pwd):/app:Z" -w /app $(IMAGE_NAME) bundle $(ARGS)
+	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd)/next:/app:Z" -w /app $(IMAGE_NAME) bundle exec jekyll build --destination ../_site_next
 else
-	$(CONTAINER_RUNTIME) run --rm -it -v "$$(pwd):/app" -w /app $(IMAGE_NAME) bundle $(ARGS)
+	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd)/next:/app" -w /app $(IMAGE_NAME) bundle exec jekyll build --destination ../_site_next
 endif
-
-.PHONY: jekyll
-jekyll: ## Run Jekyll command in container (e.g., make jekyll ARGS="new post 'My Post'")
-	@echo -e "$(GREEN)[INFO]$(NC) Running Jekyll command in container..."
-ifeq ($(shell basename $(CONTAINER_RUNTIME)),podman)
-	$(CONTAINER_RUNTIME) run --rm -it -v "$$(pwd):/app:Z" -w /app $(IMAGE_NAME) bundle exec jekyll $(ARGS)
-else
-	$(CONTAINER_RUNTIME) run --rm -it -v "$$(pwd):/app" -w /app $(IMAGE_NAME) bundle exec jekyll $(ARGS)
-endif
-
-# Quick commands
-.PHONY: up down serve
-up: run ## Alias for 'run'
-down: stop ## Alias for 'stop'
-serve: run ## Alias for 'run' (common Jekyll command)
+	@echo -e "$(GREEN)[INFO]$(NC) Next site built successfully in _site_next directory!"

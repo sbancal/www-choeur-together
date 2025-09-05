@@ -8,7 +8,7 @@
 title: "Choeur Together"
 description: "Partager l'amour de Jésus à travers le chant parce que chaque personne compte."
 url: "https://www.choeur-together.ch" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/next" # the subpath of your site, e.g. /blog
 
 # Build settings
 markdown: kramdown
