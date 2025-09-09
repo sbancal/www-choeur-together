@@ -1,9 +1,9 @@
 ---
 title: Notre histoire
-permalink: /draft/notre-histoire/
+permalink: /notre-histoire/
 ---
 
-# Notre histoire – brouillon
+# L'aventure Together
 {:.title}
 
 ## De 2021 à 2024

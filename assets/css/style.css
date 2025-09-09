@@ -37,6 +37,12 @@ body {
     font-style: italic;
 }
 
+.nav-current {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
 .lato-thin {
     font-family: "Lato", sans-serif;
     font-weight: 100;

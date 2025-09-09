@@ -3,7 +3,7 @@ title: Contact
 permalink: /contact/
 ---
 
-# Contact
+# Parlons ensemble !
 {:.title}
 
 Vous êtes responsables d'une institution ou d'un événement et vous souhaitez nous inviter à chanter ?

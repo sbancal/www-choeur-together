@@ -1,6 +1,6 @@
 ---
 title: Rejoins-nous !
-permalink: /join/
+permalink: /rejoins-nous/
 ---
 
 # Rejoins le Chœur Together !

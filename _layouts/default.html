@@ -16,11 +16,11 @@
         <header>
             <h1 class="parisienne-title">{{ site.title }}</h1>
             <nav>
-                <a href="{{ '/' | relative_url }}">Accueil</a>
-                <a href="{{ '/about/' | relative_url }}">Qui sommes-nous ?</a>
-                <a href="{{ '/performances/' | relative_url }}">Nos prestations</a>
-                <a href="{{ '/join/' | relative_url }}">Rejoins-nous !</a>
-                <a href="{{ '/contact/' | relative_url }}">Contact</a>
+                <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="nav-current"{% endif %}>Accueil</a>
+                <a href="{{ '/qui-sommes-nous/' | relative_url }}" {% if page.url == '/qui-sommes-nous/' %}class="nav-current"{% endif %}>Qui sommes-nous ?</a>
+                <a href="{{ '/notre-histoire/' | relative_url }}" {% if page.url == '/notre-histoire/' %}class="nav-current"{% endif %}>Notre histoire</a>
+                <a href="{{ '/rejoins-nous/' | relative_url }}" {% if page.url == '/rejoins-nous/' %}class="nav-current"{% endif %}>Rejoins-nous !</a>
+                <a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}class="nav-current"{% endif %}>Contact</a>
             </nav>
         </header>
 
