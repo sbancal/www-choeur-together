@@ -3,4 +3,4 @@ title: Choeur Together
 permalink: /
 ---
 
-« Photo »
+<img src="{{ '/assets/img/Together2025-09-12.jpg' | relative_url }}" alt="Choeur Together" class="full-width-img" />
