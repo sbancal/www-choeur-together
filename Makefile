@@ -1,7 +1,7 @@
 # Jekyll Container Management Makefile (Dual Targets)
 
 # Configuration
-IMAGE_NAME := www-choeur-together
+IMAGE_NAME := jekyll-custom-www-choeur-together:latest
 CONTAINER_NAME := www-choeur-together
 PORT_MAIN := 4000
 PORT_NEXT := 4001
@@ -32,6 +32,12 @@ help: ## Show this help message
 	@echo "Container Runtime: $(CONTAINER_RUNTIME)"
 	@echo "Image Name: $(IMAGE_NAME)"
 	@echo ""
+
+build-jekyll-custom-www-choeur-together: ## Build the custom Jekyll Docker image
+	@echo -e "$(GREEN)[INFO]$(NC) Building custom Jekyll Docker image..."
+	$(CONTAINER_RUNTIME) build \
+		-t $(IMAGE_NAME) \
+		-f Dockerfile .
 
 dev-main: stop-main ## Run main site container on port 4000
 	@echo -e "$(GREEN)[INFO]$(NC) Starting main site on :$(PORT_MAIN)..."
@@ -88,17 +94,29 @@ logs-next: ## Show logs for next site container
 build-main: ## Build the main Jekyll site
 	@echo -e "$(GREEN)[INFO]$(NC) Building main Jekyll site..."
 ifeq ($(shell basename $(CONTAINER_RUNTIME)),podman)
-	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd):/app:Z" -w /app $(IMAGE_NAME) bundle exec jekyll build
+	$(CONTAINER_RUNTIME) run --rm \
+		-v "$$(pwd):/app:Z" \
+		-w /app $(IMAGE_NAME) \
+		bundle exec jekyll build
 else
-	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd):/app" -w /app $(IMAGE_NAME) bundle exec jekyll build
+	$(CONTAINER_RUNTIME) run --rm \
+		-v "$$(pwd):/app" \
+		-w /app $(IMAGE_NAME) \
+		bundle exec jekyll build
 endif
 	@echo -e "$(GREEN)[INFO]$(NC) Main site built successfully in _site directory!"
 
 build-next: ## Build the next Jekyll site
 	@echo -e "$(GREEN)[INFO]$(NC) Building next Jekyll site..."
 ifeq ($(shell basename $(CONTAINER_RUNTIME)),podman)
-	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd)/next:/app:Z" -w /app $(IMAGE_NAME) bundle exec jekyll build --destination ../_site_next
+	$(CONTAINER_RUNTIME) run --rm \
+		-v "$$(pwd)/next:/app:Z" \
+		-w /app $(IMAGE_NAME) \
+		bundle exec jekyll build --destination ../_site_next
 else
-	$(CONTAINER_RUNTIME) run --rm -v "$$(pwd)/next:/app" -w /app $(IMAGE_NAME) bundle exec jekyll build --destination ../_site_next
+	$(CONTAINER_RUNTIME) run --rm \
+		-v "$$(pwd)/next:/app" \
+		-w /app $(IMAGE_NAME) \
+		bundle exec jekyll build --destination ../_site_next
 endif
 	@echo -e "$(GREEN)[INFO]$(NC) Next site built successfully in _site_next directory!"

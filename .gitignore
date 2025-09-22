@@ -8,7 +8,6 @@ _site_next/
 # Bundler
 .bundle/
 vendor/
-Gemfile.lock
 
 # OS generated files
 .DS_Store
