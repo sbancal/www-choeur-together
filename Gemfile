@@ -20,6 +20,6 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 group :jekyll_plugins do
   gem "jekyll-tailwindcss"
 end
-# As of today, the latest version of `tailwindcss-ruby` is `4.1.13`.
-# However, class collection is broken in this version.
-gem "tailwindcss-ruby", "~> 3.4"
+# # As of today, the latest version of `tailwindcss-ruby` is `4.1.13`.
+# # However, class collection is broken in this version.
+# gem "tailwindcss-ruby", "~> 3.4"
