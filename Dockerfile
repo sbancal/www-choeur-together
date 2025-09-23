@@ -1,10 +1,14 @@
-FROM ruby:3.4-alpine
 
-RUN apk add --no-cache \
-    build-base \
-    git \
-    nodejs \
-    npm
+FROM ruby:3.4
+
+RUN apt-get update && \
+        apt-get install -y --no-install-recommends \
+            build-essential \
+            git \
+            nodejs \
+            npm \
+            ca-certificates && \
+        rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
