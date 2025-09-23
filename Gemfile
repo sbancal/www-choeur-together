@@ -16,3 +16,10 @@ gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
 # do not have a Java counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
+
+group :jekyll_plugins do
+  gem "jekyll-tailwindcss"
+end
+# As of today, the latest version of `tailwindcss-ruby` is `4.1.13`.
+# However, class collection is broken in this version.
+gem "tailwindcss-ruby", "~> 3.4"

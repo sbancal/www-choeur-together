@@ -14,6 +14,7 @@ baseurl: "/next" # the subpath of your site, e.g. /blog
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-tailwindcss
 
 # Collections for organizing pages
 collections:
@@ -45,3 +46,6 @@ exclude:
   - .prettierignore
   - .vscode/
   - README.md
+
+tailwindcss:
+  config: "./tailwind.config.js"

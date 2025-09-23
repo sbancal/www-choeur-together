@@ -12,7 +12,7 @@ COPY Gemfile Gemfile.lock ./
 
 RUN bundle install
 
-COPY . .
+# Note: The right app content (main or next) has to be copied to the container run context.
 
 EXPOSE 4000
 

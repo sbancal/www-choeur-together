@@ -1,10 +1,5 @@
----
-title: Rejoins-nous !
-permalink: /rejoins-nous/
----
-
 # Rejoins le Chœur Together !
-{:.title}
+{: .title1 }
 
 Aimes-tu chanter avec d’autres, en français comme en anglais ?
 Es-tu disponible les vendredis soirs (environ 15 répétitions par an, de 19h30 à 21h30) ?
