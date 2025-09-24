@@ -25,12 +25,14 @@
       rel="stylesheet"
     />
   </head>
-  <body class="bg-gray-100 in-progress-decor">
+  <body class="bg-gray-100 in-progress-decor text-sm sm:text-base">
     <!-- Header pinned to top -->
     <header class="w-full top-0 left-0 z-20">
       <div class="max-w-3xl mx-auto flex flex-col items-center py-6">
-        <h1 class="parisienne-400 text-7xl mb-2">{{ site.title }}</h1>
-        <nav class="flex gap-4 mt-2">
+        <h1 class="parisienne-400 text-5xl sm:text-7xl mb-2">
+          {{ site.title }}
+        </h1>
+        <nav class="flex flex-col sm:flex-row gap-4 mt-2 text-sm sm:text-base">
           <a
             href="#"
             data-section="accueil"
@@ -74,31 +76,34 @@
       <div class="relative max-w-5xl w-full">
         <div
           id="top-blur"
-          class="pointer-events-none absolute rounded-t-xl top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10"
+          class="pointer-events-none absolute lg:rounded-t-xl top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10"
         ></div>
         <div
           id="bottom-blur"
-          class="pointer-events-none absolute rounded-b-xl bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10"
+          class="pointer-events-none absolute lg:rounded-b-xl bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10"
         ></div>
         <div
-          class="card bg-white rounded-xl shadow-2xl p-10 aspect-[1.65/1] text-gray-800 overflow-y-auto relative z-0"
+          class="card bg-white lg:rounded-xl shadow-2xl p-5 sm:p-8 md:p-10 w-full max-w-5xl aspect-auto sm:aspect-[1.65/1] text-gray-800 overflow-y-auto relative z-0"
         >
           {{ content }}
         </div>
       </div>
     </main>
 
-    <footer class="w-full text-center mt-10 mb-5 text-gray-400 text-sm">
+    <footer class="w-full text-center mt-10 mb-5 px-4 text-gray-400 text-sm">
       <p>
         {{ site.description }} <br />
         Ouest-Lausannois • {{ site.time | date: "%Y" }}
       </p>
     </footer>
     <script>
+      function isSmallScreen() {
+        return window.innerWidth < 640;
+      }
       document.addEventListener("DOMContentLoaded", () => {
         const links = document.querySelectorAll(".menu-link");
         function setActiveLink(selectedSection) {
-          if (selectedSection === "accueil") {
+          if (isSmallScreen() || selectedSection === "accueil") {
             document.getElementById("top-blur").classList.add("hidden");
             document.getElementById("bottom-blur").classList.add("hidden");
           } else {

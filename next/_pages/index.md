@@ -13,18 +13,18 @@ permalink: /
   {{ accueil | markdownify }}
 </div>
 
-<div id="qui-sommes-nous" class="section p-14 hidden">
+<div id="qui-sommes-nous" class="section p-2 sm:p-8 md:p-14 hidden">
   {{ qui-sommes-nous | markdownify }}
 </div>
 
-<div id="notre-histoire" class="section p-14 hidden">
+<div id="notre-histoire" class="section p-2 sm:p-8 md:p-14 hidden">
   {{ notre-histoire | markdownify }}
 </div>
 
-<div id="rejoins-nous" class="section p-14 hidden">
+<div id="rejoins-nous" class="section p-2 sm:p-8 md:p-14 hidden">
   {{ rejoins-nous | markdownify }}
 </div>
 
-<div id="contact" class="section p-14 hidden">
+<div id="contact" class="section p-2 sm:p-8 md:p-14 hidden">
   {{ contact | markdownify }}
 </div>
