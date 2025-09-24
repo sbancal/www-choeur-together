@@ -1,168 +1,44 @@
+---
+---
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
-    line-height: 1.6;
-    color: #333;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
 }
 
-.container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.in-progress-decor header {
+    position: relative;
+}
+.in-progress-decor header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-image: url({{ '/assets/img/in-progress.webp' | relative_url }});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.8;
 }
 
-.parisienne-title {
+.parisienne-400 {
     font-family: "Parisienne", cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 5em;
 }
 
-.parisienne {
-    font-family: "Parisienne", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.7em;
+.title1 {
+    @apply text-4xl font-bold leading-tight text-gray-900 my-6;
 }
 
-.title {
-    font-family: "Lato", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-}
-
-.nav-current {
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-}
-
-.lato-thin {
-    font-family: "Lato", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-}
-
-.lato-light {
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-.lato-regular {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.lato-bold {
-    font-family: "Lato", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.lato-black {
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-}
-
-.lato-thin-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-}
-
-.lato-light-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-}
-
-.lato-regular-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.lato-bold-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-}
-
-.lato-black-italic {
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-}
-
-
-h1 {
-    font-weight: 100;
-    color: #2c3e50;
-    padding-bottom: 10px;
-}
-
-h2 {
-    color: #34495e;
-    margin-top: 30px;
-}
-
-.post-date {
-    color: #7f8c8d;
-    font-size: 0.9em;
-    margin-left: 10px;
-}
-
-code {
-    background-color: #ecf0f1;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-family: 'Courier New', monospace;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #ecf0f1;
-    border-radius: 5px;
-}
-
-a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-nav {
-    margin: 20px 0;
-    padding: 15px 0;
-    border-bottom: 1px solid #ecf0f1;
-}
-
-nav a {
-    margin-right: 20px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-nav a:hover {
-    background-color: #ecf0f1;
-    text-decoration: none;
+.title2 {
+    @apply text-2xl font-bold leading-tight text-gray-900 my-4;
 }
