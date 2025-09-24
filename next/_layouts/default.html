@@ -70,12 +70,21 @@
       </div>
     </header>
 
-    <!-- Content card, scrollable -->
     <main class="flex justify-center items-start">
-      <div
-        class="card bg-white rounded-xl shadow-lg p-10 max-w-5xl overflow-y-auto aspect-[1.65/1] text-gray-800"
-      >
-        {{ content }}
+      <div class="relative max-w-5xl w-full">
+        <div
+          id="top-blur"
+          class="pointer-events-none absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10"
+        ></div>
+        <div
+          id="bottom-blur"
+          class="pointer-events-none absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10"
+        ></div>
+        <div
+          class="card bg-white rounded-xl shadow-2xl p-10 aspect-[1.65/1] text-gray-800 overflow-y-auto relative z-0"
+        >
+          {{ content }}
+        </div>
       </div>
     </main>
 
@@ -89,6 +98,13 @@
       document.addEventListener("DOMContentLoaded", () => {
         const links = document.querySelectorAll(".menu-link");
         function setActiveLink(selectedSection) {
+          if (selectedSection === "accueil") {
+            document.getElementById("top-blur").classList.add("hidden");
+            document.getElementById("bottom-blur").classList.add("hidden");
+          } else {
+            document.getElementById("top-blur").classList.remove("hidden");
+            document.getElementById("bottom-blur").classList.remove("hidden");
+          }
           links.forEach((link) => {
             if (link.getAttribute("data-section") === selectedSection) {
               link.classList.remove("text-gray-400");

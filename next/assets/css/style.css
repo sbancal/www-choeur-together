@@ -42,7 +42,3 @@ body {
 .title2 {
     @apply text-2xl font-bold leading-tight text-gray-900 my-4;
 }
-
-.minimum-text {
-    @apply p-24;
-}
