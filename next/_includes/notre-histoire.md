@@ -11,7 +11,7 @@ La fin d’année 2023, particulièrement chargée pour l’équipe de coordinat
 Mais en janvier 2024, une invitation de la prison de la Croisée nous ouvre à une expérience puissante qui devient un véritable déclic : un chœur appelé à partager l’amour de Jésus et la joie de lui appartenir dans toute notre région.
 
 Au printemps-été 2024, la vision s’affine, un premier répertoire prend forme avec des arrangements originaux.
-En septembre 2024, l'aventure <span class="parisienne-400">Together</span> est officiellement née !
+En septembre 2024, l'aventure <span class="parisienne-400 text-2xl">Together</span> est officiellement née !
 
 ## Saison 2024-2025
 {: .title2 }

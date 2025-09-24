@@ -8,7 +8,7 @@ permalink: /
   {{ accueil | markdownify }}
 </div>
 
-<div id="qui-sommes-nous" class="section hidden">
+<div id="qui-sommes-nous" class="section minimum-text hidden">
   {% capture qui-sommes-nous %}{% include qui-sommes-nous.md %}{% endcapture %}
   {{ qui-sommes-nous | markdownify }}
 </div>
@@ -18,12 +18,12 @@ permalink: /
   {{ notre-histoire | markdownify }}
 </div>
 
-<div id="rejoins-nous" class="section hidden">
+<div id="rejoins-nous" class="section minimum-text hidden">
   {% capture rejoins-nous %}{% include rejoins-nous.md %}{% endcapture %}
   {{ rejoins-nous | markdownify }}
 </div>
 
-<div id="contact" class="section hidden">
+<div id="contact" class="section minimum-text hidden">
   {% capture contact %}{% include contact.md %}{% endcapture %}
   {{ contact | markdownify }}
 </div>
