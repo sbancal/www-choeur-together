@@ -1,7 +1,7 @@
-# Rejoins le Chœur Together !
+# Toi aussi, rejoins le Chœur Together !
 {: .title1 }
 
-Aimes-tu chanter avec d’autres, en français comme en anglais ?
+Habites-tu proche de Lausanne ? Aimes-tu chanter avec d’autres, en français comme en anglais ?
 Es-tu disponible les vendredis soirs (environ 15 répétitions par an, de 19h30 à 21h30) ?
 Souhaites-tu mettre ta voix et ton talent au service de Dieu et pour Sa gloire à travers un projet musical ?
 

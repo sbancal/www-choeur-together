@@ -1,4 +1,4 @@
-# Notre identité
+# Qui sommes-nous ?
 {: .title1 }
 
 Fondé en 2024, Together est un chœur engagé et ancré dans la région lausannoise.
