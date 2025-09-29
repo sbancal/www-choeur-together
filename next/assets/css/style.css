@@ -4,10 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+.next-bg {
+    background-image: url({{ '/assets/img/Together2025-09-12.webp' | relative_url }});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left top;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+body.next-bg.scrolling-bg {
+    /* background-position will be set dynamically by JS on scroll */
+    transition: background-position 0.3s linear;
+}
+
+.work-sans-100 {
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
 }
 
 .in-progress-decor header {
@@ -27,18 +42,21 @@ body {
     pointer-events: none;
     z-index: 0;
     opacity: 0.8;
+    @apply m-4;
 }
 
-.parisienne-400 {
-    font-family: "Parisienne", cursive;
-    font-weight: 400;
-    font-style: normal;
+.chapter {
+    @apply min-h-screen flex flex-col justify-center;
+}
+
+.section {
+    @apply m-20 p-4 bg-black/80 rounded-lg shadow-lg;
 }
 
 .title1 {
-    @apply text-4xl font-bold leading-tight text-gray-900 my-6;
+    @apply text-5xl my-6 text-left;
 }
 
 .title2 {
-    @apply text-2xl font-bold leading-tight text-gray-900 my-4;
+    @apply text-4xl my-4 text-left;
 }

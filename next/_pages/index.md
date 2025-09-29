@@ -3,28 +3,34 @@ title: Choeur Together
 permalink: /
 ---
 
-{% capture accueil %}{% include accueil.md %}{% endcapture %}
 {% capture qui-sommes-nous %}{% include qui-sommes-nous.md %}{% endcapture %}
 {% capture notre-histoire %}{% include notre-histoire.md %}{% endcapture %}
 {% capture rejoins-nous %}{% include rejoins-nous.md %}{% endcapture %}
 {% capture contact %}{% include contact.md %}{% endcapture %}
 
-<div id="accueil" class="section">
-  {{ accueil | markdownify }}
+<div id="accueil" class="chapter">
 </div>
 
-<div id="qui-sommes-nous" class="section p-2 sm:p-8 md:p-14 hidden">
+<div id="qui-sommes-nous" class="chapter">
+  <div class="section">
   {{ qui-sommes-nous | markdownify }}
+  </div>
 </div>
 
-<div id="notre-histoire" class="section p-2 sm:p-8 md:p-14 hidden">
+<div id="notre-histoire" class="chapter">
+  <div class="section">
   {{ notre-histoire | markdownify }}
+  </div>
 </div>
 
-<div id="rejoins-nous" class="section p-2 sm:p-8 md:p-14 hidden">
+<div id="rejoins-nous" class="chapter">
+  <div class="section">
   {{ rejoins-nous | markdownify }}
+  </div>
 </div>
 
-<div id="contact" class="section p-2 sm:p-8 md:p-14 hidden">
+<div id="contact" class="chapter">
+  <div class="section">
   {{ contact | markdownify }}
+  </div>
 </div>
