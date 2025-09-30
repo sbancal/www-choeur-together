@@ -28,7 +28,7 @@
       // Animate background position horizontally on scroll
       document.addEventListener("DOMContentLoaded", () => {
         const body = document.body;
-        if (body.classList.contains("next-bg")) {
+        if (body.classList.contains("photo-bg")) {
           body.classList.add("scrolling-bg");
           window.addEventListener("scroll", () => {
             const scrollPercent =
@@ -44,7 +44,7 @@
   </head>
 
   <body
-    class="in-progress-decor work-sans-100 bg-gray-100 text-sm sm:text-base next-bg"
+    class="in-progress-decor work-sans-100 bg-gray-100 text-sm sm:text-base photo-bg"
   >
     <header></header>
     <main class="flex flex-col items-center text-white">

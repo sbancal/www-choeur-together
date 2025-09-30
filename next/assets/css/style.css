@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.next-bg {
+.photo-bg {
     background-image: url({{ '/assets/img/Together2025-09-12.webp' | relative_url }});
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,7 +13,7 @@
     min-height: 100vh;
 }
 
-body.next-bg.scrolling-bg {
+body.photo-bg.scrolling-bg {
     /* background-position will be set dynamically by JS on scroll */
     transition: background-position 0.3s linear;
 }
