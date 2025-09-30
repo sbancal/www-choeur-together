@@ -34,10 +34,25 @@
             const scrollPercent =
               window.scrollY /
               (document.body.scrollHeight - window.innerHeight);
-            // Move from left (0%) to right (100%)
             const xPos = Math.round(scrollPercent * 100);
+            // Animate background for desktop browsers
             body.style.backgroundPosition = `${xPos}% top`;
+            // Animate background for iOS Safari (and all browsers) using ::before
+            body.style.setProperty("--bg-x-pos", `${xPos}%`);
+            const before = document.createElement("style");
+            before.innerHTML = `body.photo-bg::before { background-position: var(--bg-x-pos, left) top !important; }`;
+            // Remove previous style if present
+            const old = document.getElementById("bg-scroll-style");
+            if (old) old.remove();
+            before.id = "bg-scroll-style";
+            document.head.appendChild(before);
           });
+          // Set initial position
+          body.style.setProperty("--bg-x-pos", `0%`);
+          const before = document.createElement("style");
+          before.innerHTML = `body.photo-bg::before { background-position: var(--bg-x-pos, left) top !important; }`;
+          before.id = "bg-scroll-style";
+          document.head.appendChild(before);
         }
       });
     </script>

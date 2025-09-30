@@ -4,17 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-.photo-bg {
+body.photo-bg::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-image: url({{ '/assets/img/Together2025-09-12.webp' | relative_url }});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left top;
-    background-attachment: fixed;
-    min-height: 100vh;
-}
-
-body.photo-bg.scrolling-bg {
-    /* background-position will be set dynamically by JS on scroll */
+    z-index: -1;
+    pointer-events: none;
     transition: background-position 0.3s linear;
 }
 
