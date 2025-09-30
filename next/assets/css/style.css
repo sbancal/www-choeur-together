@@ -63,6 +63,10 @@ body.photo-bg::before {
     @apply text-4xl my-4 text-left;
 }
 
+#header {
+  margin-top: 13vh; /* above people */
+}
+
 #footer > div {
-  margin-top: 60vh; /* about 2/3 of the viewport height */
+  margin-top: 60vh; /* legs area */
 }
