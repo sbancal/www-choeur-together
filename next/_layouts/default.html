@@ -25,15 +25,15 @@
       rel="stylesheet"
     />
     <script>
-      // Animate background position horizontally on scroll
+      // Animate background position horizontally on scroll (main scroll)
       document.addEventListener("DOMContentLoaded", () => {
         const body = document.body;
-        if (body.classList.contains("photo-bg")) {
+        const main = document.querySelector("main");
+        if (body.classList.contains("photo-bg") && main) {
           body.classList.add("scrolling-bg");
-          window.addEventListener("scroll", () => {
+          const updateBg = () => {
             const scrollPercent =
-              window.scrollY /
-              (document.body.scrollHeight - window.innerHeight);
+              main.scrollTop / (main.scrollHeight - main.clientHeight);
             const xPos = Math.round(scrollPercent * 100);
             // Animate background for desktop browsers
             body.style.backgroundPosition = `${xPos}% top`;
@@ -46,7 +46,8 @@
             if (old) old.remove();
             before.id = "bg-scroll-style";
             document.head.appendChild(before);
-          });
+          };
+          main.addEventListener("scroll", updateBg);
           // Set initial position
           body.style.setProperty("--bg-x-pos", `0%`);
           const before = document.createElement("style");
@@ -59,20 +60,19 @@
   </head>
 
   <body
-    class="in-progress-decor work-sans-100 bg-gray-100 text-sm sm:text-base photo-bg"
+    class="in-progress-decor work-sans-100 bg-gray-100 text-xl lg:text-2xl photo-bg"
   >
     <header></header>
     <main class="flex flex-col items-center text-white">
-      <h1
-        id="header"
-        class="section text-5xl lg:text-7xl sm:mt-48 lg:mt-40 text-center"
-      >
-        C&nbsp;H&nbsp;O&nbsp;E&nbsp;U&nbsp;R&nbsp;
-        &nbsp;T&nbsp;O&nbsp;G&nbsp;E&nbsp;T&nbsp;H&nbsp;E&nbsp;R
-      </h1>
-      <div class="text-xl text-justify">{{ content }}</div>
-      <div id="footer" class="text-xl chapter">
-        <div class="section text-center">
+      <div class="chapter chapter-header">
+        <h1 class="section">
+          C&nbsp;H&nbsp;O&nbsp;E&nbsp;U&nbsp;R&nbsp;
+          &nbsp;T&nbsp;O&nbsp;G&nbsp;E&nbsp;T&nbsp;H&nbsp;E&nbsp;R
+        </h1>
+      </div>
+      <div class="text-justify">{{ content }}</div>
+      <div class="chapter chapter-footer">
+        <div class="section">
           &laquo; {{ site.description }} &raquo; <br />
           Ouest-Lausannois • {{ site.time | date: "%Y" }}
         </div>

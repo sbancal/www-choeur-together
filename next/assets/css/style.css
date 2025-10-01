@@ -47,8 +47,31 @@ body.photo-bg::before {
     @apply m-4;
 }
 
+main {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+}
+
 .chapter {
     @apply min-h-screen flex flex-col justify-center;
+    scroll-snap-align: start;
+}
+
+.chapter-header {
+    @apply justify-start text-4xl xl:text-7xl text-center;
+}
+
+.chapter-header > .section {
+    @apply mt-[15vh];
+}
+
+.chapter-footer {
+    @apply justify-start text-center;
+}
+
+.chapter-footer > .section {
+    @apply mt-[70vh];
 }
 
 .section {
@@ -56,17 +79,9 @@ body.photo-bg::before {
 }
 
 .title1 {
-    @apply text-5xl my-6 text-left;
+    @apply text-4xl xl:text-5xl my-6 text-left;
 }
 
 .title2 {
-    @apply text-4xl my-4 text-left;
-}
-
-#header {
-  margin-top: 13vh; /* above people */
-}
-
-#footer > div {
-  margin-top: 60vh; /* legs area */
+    @apply text-3xl xl:text-4xl my-4 text-left;
 }

@@ -8,9 +8,6 @@ permalink: /
 {% capture rejoins-nous %}{% include rejoins-nous.md %}{% endcapture %}
 {% capture contact %}{% include contact.md %}{% endcapture %}
 
-<div id="accueil" class="chapter">
-</div>
-
 <div id="qui-sommes-nous" class="chapter">
   <div class="section">
   {{ qui-sommes-nous | markdownify }}
