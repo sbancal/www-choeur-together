@@ -6,7 +6,7 @@
 # feature for the data you need to update frequently.
 
 title: "Choeur Together"
-description: "Partager l'amour de Jésus à travers le chant, parce que chaque personne compte."
+description: "Nous aimons partager l'amour de Jésus à travers le chant, parce que chaque personne compte."
 url: "https://www.choeur-together.ch" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 
