@@ -86,7 +86,7 @@ main {
 }
 
 .section {
-    @apply m-20 p-4 bg-black/80 rounded-lg shadow-lg;
+    @apply m-20 p-4 bg-black/70 rounded-lg shadow-lg;
 }
 
 .title1 {
