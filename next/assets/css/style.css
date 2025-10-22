@@ -18,6 +18,17 @@ body.photo-bg::before {
     z-index: -1;
     pointer-events: none;
     transition: background-position 0.3s linear;
+    filter: blur(10px) brightness(0);
+    animation: reveal 1s ease-out forwards;
+}
+
+@keyframes reveal {
+    from {
+        filter: blur(10px) brightness(0);
+    }
+    to {
+        filter: blur(0px) brightness(1);
+    }
 }
 
 .work-sans-100 {
