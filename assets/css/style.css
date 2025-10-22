@@ -18,6 +18,17 @@ body.photo-bg::before {
     z-index: -1;
     pointer-events: none;
     transition: background-position 0.3s linear;
+    filter: blur(10px) brightness(0);
+    animation: reveal 1s ease-out forwards;
+}
+
+@keyframes reveal {
+    from {
+        filter: blur(10px) brightness(0);
+    }
+    to {
+        filter: blur(0px) brightness(1);
+    }
 }
 
 .work-sans-100 {
@@ -75,7 +86,21 @@ main {
 }
 
 .section {
-    @apply m-20 p-4 bg-black/80 rounded-lg shadow-lg;
+    @apply m-20 p-4 bg-black/70 rounded-lg shadow-lg;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: section-reveal 1s ease-out 1s forwards;
+}
+
+@keyframes section-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .title1 {
